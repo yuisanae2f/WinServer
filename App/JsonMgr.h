@@ -92,57 +92,6 @@ namespace Json {
 		virtual eType Type() override;
 		virtual void Kill() override;
 	};
-
-	template<eType e = Interface>
-	class cPath {
-	protected:
-		iObj* obj;
-	public:
-		virtual ~cPath();
-		constexpr cPath(iObj* a = 0) : obj(a) {}
-		virtual iObj*& Path();
-		virtual eType Type();
-		constexpr iObj*& Self() { return obj; }
-	};
-	template<>
-	class cPath<Obj> : public cPath<Interface> {
-		virtual eType Type() override;
-	};
-	template<>
-	class cPath<Str> : public cPath<Interface> {
-		virtual eType Type() override;
-	};
-	template<>
-	class cPath<List> : public cPath<Interface> {
-	public:
-		size_t idx;
-
-		constexpr cPath(iObj* a, size_t idx) : 
-			cPath<Interface>(a), 
-			idx(idx) {}
-
-		virtual iObj*& Path() override;
-		virtual eType Type() override;
-	};
-	template<>
-	class cPath<Dic> : public cPath<Interface> {
-	public:
-		std::string key;
-
-		cPath(iObj* a, std::string _key);
-
-		virtual eType Type() override;
-		virtual iObj*& Path() override;
-	};
-
-	class cPathMgr {
-		iObj* obj;
-	public:
-		constexpr iObj*& operator()() { return obj; }
-		cPathMgr& operator[](std::string);
-		cPathMgr& operator[](size_t);
-		constexpr cPathMgr(iObj* a = 0) : obj(a) {}
-	};
 }
 
 #endif
