@@ -1,0 +1,143 @@
+﻿{
+  "configurations": [
+    {
+      "name": "x64-Release",
+      "generator": "Ninja",
+      "configurationType": "RelWithDebInfo",
+      "buildRoot": "${projectDir}\\out\\build\\${name}",
+      "installRoot": "${projectDir}\\out\\install\\${name}",
+      "cmakeCommandArgs": "",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "inheritEnvironments": [ "msvc_x64_x64" ],
+      "variables": [
+        {
+          "name": "Port_Num",
+          "value": "5000",
+          "type": "STRING"
+        },
+        {
+          "name": "Endpoint",
+          "value": "192.168.0.2",
+          "type": "STRING"
+        },
+        {
+          "name": "Log_Trial",
+          "value": "False",
+          "type": "BOOL"
+        },
+        {
+          "name": "Log_Console",
+          "value": "False",
+          "type": "BOOL"
+        }
+      ]
+    },
+    {
+      "name": "x64-Debug",
+      "generator": "Ninja",
+      "configurationType": "Debug",
+      "buildRoot": "${projectDir}\\out\\build\\${name}",
+      "installRoot": "${projectDir}\\out\\install\\${name}",
+      "cmakeCommandArgs": "",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "inheritEnvironments": [ "msvc_x64_x64" ],
+      "variables": [
+        {
+          "name": "Log_Trial",
+          "value": "True",
+          "type": "BOOL"
+        },
+        {
+          "name": "Log_Save",
+          "value": "True",
+          "type": "BOOL"
+        },
+        {
+          "name": "Log_GUI",
+          "value": "True",
+          "type": "BOOL"
+        },
+        {
+          "name": "Log_Failed",
+          "value": "True",
+          "type": "BOOL"
+        },
+        {
+          "name": "Log_Console",
+          "value": "True",
+          "type": "BOOL"
+        },
+        {
+          "name": "Endpoint",
+          "value": "192.168.0.2",
+          "type": "STRING"
+        },
+        {
+          "name": "Json_Path",
+          "value": "a.json",
+          "type": "STRING"
+        },
+        {
+          "name": "Port_Num",
+          "value": "5000",
+          "type": "STRING"
+        }
+      ]
+    },
+    {
+      "name": "x64-Debug-input",
+      "generator": "Ninja",
+      "configurationType": "Debug",
+      "buildRoot": "${projectDir}\\out\\build\\${name}",
+      "installRoot": "${projectDir}\\out\\install\\${name}",
+      "cmakeCommandArgs": "",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "inheritEnvironments": [ "msvc_x64_x64" ],
+      "variables": [
+        {
+          "name": "Log_Trial",
+          "value": "True",
+          "type": "BOOL"
+        },
+        {
+          "name": "Log_Save",
+          "value": "True",
+          "type": "BOOL"
+        },
+        {
+          "name": "Log_GUI",
+          "value": "True",
+          "type": "BOOL"
+        },
+        {
+          "name": "Log_Failed",
+          "value": "True",
+          "type": "BOOL"
+        },
+        {
+          "name": "Log_Console",
+          "value": "False",
+          "type": "BOOL"
+        },
+        {
+          "name": "Endpoint",
+          "value": "",
+          "type": "STRING"
+        },
+        {
+          "name": "Json_Path",
+          "value": "a.json",
+          "type": "STRING"
+        },
+        {
+          "name": "Port_Num",
+          "value": "",
+          "type": "STRING"
+        }
+      ]
+    }
+  ]
+}
