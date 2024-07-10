@@ -19,7 +19,7 @@
 #define Path_Log "log.txt"
 
 // The port number pre-defined.
-// Defining it will skip the first input when running the server.
+// Defininig it will skip the first input when running the server.
 #define PORT "5000"
 
 // The length of the [PORT].
