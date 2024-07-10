@@ -1,58 +1,57 @@
 #pragma once
 #ifndef GEN_8_H
-// Handling a string is a big deal.
-// Iterating the full string is quite heavy calculation to do for CPU.
-// 
-// In order to prevent, these built-in MACRO convert string as integer on compile time.
-// 
-// So in here what does GEN_8_H do?
-// is a builder for unsigned long long from 8 chars;
+
+/// <summary>
+/// 문자 8자리를 받아 long long으로 변환
+/// </summary>
 #define GEN_8_H
 
 /// <summary>
-/// 8-byte Integer Builder from 8-chars
+/// 문자 8자리를 받기위한 템플릿
 /// </summary>
-/// <typeparam name="a">Number A</typeparam>
-/// <typeparam name="b">Number B</typeparam>
-/// <typeparam name="c">Number C</typeparam>
-/// <typeparam name="d">Number D</typeparam>
-/// <typeparam name="e">Number E</typeparam>
-/// <typeparam name="f">Number F</typeparam>
-/// <typeparam name="g">Number G</typeparam>
-/// <typeparam name="h">Number H</typeparam>
+/// <typeparam name="word1"></typeparam>
+/// <typeparam name="word2"></typeparam>
+/// <typeparam name="word3"></typeparam>
+/// <typeparam name="word4"></typeparam>
+/// <typeparam name="word5"></typeparam>
+/// <typeparam name="word6"></typeparam>
+/// <typeparam name="word7"></typeparam>
+/// <typeparam name="word8"></typeparam>
 template<
-	const unsigned char a = 0, const unsigned char b = 0,
-	const unsigned char c = 0, const unsigned char d = 0,
-	const unsigned char e = 0, const unsigned char f = 0,
-	const unsigned char g = 0, const unsigned char h = 0
+	const unsigned char word1 = 0, const unsigned char word2 = 0,
+	const unsigned char word3 = 0, const unsigned char word4 = 0,
+	const unsigned char word5 = 0, const unsigned char word6 = 0,
+	const unsigned char word7 = 0, const unsigned char word8 = 0
 >
 struct NumGen8 {
 	/// <summary>
-	/// Integer Merged
+	/// 각 문자를 Integer로 변환
 	/// </summary>
 	static const constexpr unsigned long long val =
-		a | ((unsigned short)b << 8) | ((unsigned long)c << 16) | ((unsigned long)d << 24) |
-		((unsigned long long)e << 32) | ((unsigned long long)f << 40) | ((unsigned long long)g << 48) | ((unsigned long long)h << 56);
+	                                word1 | ((unsigned short)word2 << 8) |
+		     ((unsigned long)word3 << 16) | ((unsigned long)word4 << 24) |
+	    ((unsigned long long)word5 << 32) | ((unsigned long long)word6 << 40) |
+		((unsigned long long)word7 << 48) | ((unsigned long long)word8 << 56);
 };
 
 /// <summary>
-/// 8-byte Integer Builder from 8-chars (safe-function)
+/// 각 문자를 Integer로 변환 (안정화)
 /// </summary>
-/// <param name="a">The string</param>
-/// <param name="size">The Limit (could not be upper 8)</param>
+/// <param name="targetString"></param>
+/// <param name="size">문자열 길이 (문자열 길이는 반드시 8 미만)</param>
 /// <returns>The merged integer</returns>
-constexpr unsigned long long Gen8(const char* a, unsigned size = 8) {
-	/// lol
-	union Rtn {
-		unsigned long long r;
-		unsigned char a[8];
-	} rtn{ 0ull };
-	unsigned char i = 0;
+constexpr unsigned long long Gen8(const char* targetString, unsigned long size = 8) {
 
-	for (; i < 8 && i < size && a[i]; i++) {
-		rtn.a[i] = a[i];
+	union UResult {
+		unsigned long long convertedNumber;
+		unsigned char targetString[8];
+	} uResult { 0ull };
+	
+	for (unsigned char i = 0; (i < 8) && (i < size && targetString[i]); i++) {
+		uResult.targetString[i] = targetString[i];
 	}
-	return rtn.r;
+
+	return uResult.convertedNumber;
 }
 
-#endif // !GEN_8_H
+#endif
