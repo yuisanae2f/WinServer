@@ -1,10 +1,10 @@
 #pragma once
-#ifndef GEN_8_H
+#ifndef StringConverter_H
 
 /// <summary>
 /// 문자 8자리를 받아 long long으로 변환
 /// </summary>
-#define GEN_8_H
+#define StringConverter_H
 
 /// <summary>
 /// 문자 8자리를 받기위한 템플릿
